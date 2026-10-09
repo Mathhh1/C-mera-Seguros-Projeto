@@ -26,6 +26,7 @@ body {
     background: var(--fundo-site);
     box-shadow: 0 8px 24px rgba(16, 35, 61, 0.16);
 }
+
 .cabecalho > nav {
     display: flex;
     align-items: center;
@@ -48,6 +49,102 @@ body {
 .cabecalho .contate-conosco {
     background: var(--azul);
     color: var(--branco);
+}
+
+.modal-contato {
+    box-sizing: border-box;
+    width: min(92vw, 500px);
+    max-width: 500px;
+    max-height: 90vh;
+    padding: 0;
+    overflow: auto;
+    border: 1px solid rgba(141, 186, 255, 0.35);
+    border-radius: 24px;
+    background: linear-gradient(145deg, #1b304a, #101f33);
+    color: var(--branco);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+.modal-contato::backdrop {
+    background: rgba(3, 10, 20, 0.76);
+    backdrop-filter: blur(5px);
+}
+.form-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: clamp(22px, 5vw, 34px);
+}
+.form-contato h3 {
+    margin: 0 0 4px;
+    color: #dce9ff;
+    font-size: 1.6rem;
+}
+.form-contato h3::after {
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-top: 10px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #2580ff, #76b3ff);
+    content: "";
+}
+.form-contato label {
+    margin-top: 4px;
+    color: #cbd8e8;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.form-contato input,
+.form-contato select,
+.form-contato textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(174, 197, 226, 0.24);
+    border-radius: 12px;
+    background: rgba(5, 17, 32, 0.7);
+    color: var(--branco);
+    font: inherit;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.form-contato textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+.form-contato input::placeholder,
+.form-contato textarea::placeholder {
+    color: #8394aa;
+}
+.form-contato input:focus,
+.form-contato select:focus,
+.form-contato textarea:focus {
+    outline: none;
+    border-color: #5ba0ff;
+    box-shadow: 0 0 0 3px rgba(37, 128, 255, 0.2);
+}
+.botoes-form {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 14px;
+}
+.btn-enviar,
+.btn-cancelar {
+    padding: 11px 22px;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.btn-enviar { border: 0; background: linear-gradient(135deg, #2580ff, var(--azul)); color: var(--branco); box-shadow: 0 7px 18px rgba(7, 95, 228, 0.28); }
+.btn-cancelar { border: 1px solid rgba(174, 197, 226, 0.32); background: transparent; color: #dce9ff; }
+.btn-enviar:hover,
+.btn-cancelar:hover { transform: translateY(-1px); }
+.btn-cancelar:hover { background: rgba(255, 255, 255, 0.06); }
+@media (max-width: 480px) {
+    .botoes-form { flex-direction: column-reverse; }
+    .botoes-form button { width: 100%; }
 }
 .cabecalho .saiba-mais:hover,
 .cabecalho .contate-conosco:hover {
@@ -166,4 +263,11 @@ h2 {
 }
 .rodape a {
     color: #8dbaff;
+}
+
+/* Estilo para o logo do GitHub (ao cliclar vai abrir o repositório) */
+.logo-github {
+    width: 50px;
+    height: 50px;
+    margin-left: 8px;
 }
