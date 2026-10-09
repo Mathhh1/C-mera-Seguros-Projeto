@@ -9,7 +9,7 @@ Integrantes informados pelo grupo.
 | Integrante | GitHub |
 |---|---|
 | Matheus | [@Mathhh1](https://github.com/Mathhh1) |
-| Cãua Pedro | [@yuukine67](https://github.com/yuukine67) |
+| Cauã Pedro | [@yuukine67](https://github.com/yuukine67) |
 | Victor Carlos | [@victorcarlos1998-lang](https://github.com/victorcarlos1998-lang) |
 | Alberison | [@Alberison90](https://github.com/Alberison90) |
 
