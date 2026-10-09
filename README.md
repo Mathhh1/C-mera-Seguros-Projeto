@@ -47,7 +47,7 @@ O público principal são pessoas procurando veículos usados. O catálogo procu
 - **JavaScript** para busca, filtros, carrossel, formulários e carrinho.
 - **Git e GitHub** para versionamento e colaboração.
 
-Não foi usado um framework JavaScript. Para o escopo atual, HTML, CSS e JavaScript foram suficientes para construir as páginas e atualizar a interface com eventos do navegador. O projeto não tem back-end, banco de dados ou integração de pagamento.
+Não foi usado um framework JavaScript. Para o escopo atual, HTML, CSS e JavaScript foram suficientes para construir as páginas e atualizar a interface com eventos do navegador. 
 
 ## 📁 Estrutura do projeto
 
@@ -110,10 +110,6 @@ Vue poderia ser uma alternativa para organizar a interface em componentes manten
 
 Durante a integração das versões, a estrutura das páginas, os identificadores dos formulários e os caminhos das imagens precisaram ser alinhados. A solução foi manter os recursos complementares nas páginas correspondentes, ajustar as referências entre arquivos e ligar os formulários e controles aos elementos existentes no HTML.
 
-## 🤝 Divisão do trabalho
-
-O histórico local consultado identifica commits de Matheus (`Mathhh1`) e Cãua Pedro (`yuukine67`). Os registros de Cãua Pedro descrevem a página de compra, o carrinho, o carrossel e a inclusão de imagens; os de Matheus incluem a base inicial e refatorações. Os commits de Victor Carlos e Alberison não aparecem no histórico local consultado. Acrescentem aqui as tarefas específicas de cada integrante e confiram se todos realizaram commits no repositório de entrega.
-
 ## 🗓️ Histórico do desenvolvimento
 
 - **28/09/2026:** início do repositório.
@@ -139,8 +135,6 @@ O histórico local contém as branches `main`, `teste` e `pr/1`, além de refer�
 | 09/10/2026 | Codex (GPT-6) | Mesclar as versões e conectar formulários e controles à página atual. | **Ajuste de itens** — integração em `site/index.html` e `site/script.js`. |
 | 09/10/2026 | Codex (GPT-6) | Criar interação de catálogo e navegação para a página de compra. | **Criação de site (ao clicar, é redirecionado para outra página)** — páginas `site/` e `compra/`. |
 | 09/10/2026 | Modelo não registrado no histórico | O histórico de commits informa que algumas imagens foram geradas com IA; o prompt e o modelo não foram registrados. | Imagens de veículos incluídas no projeto. Confirmar os dados com quem gerou as imagens. |
-
-As sugestões de código foram revisadas e adaptadas à estrutura existente, incluindo caminhos, identificadores de formulários, catálogo e navegação entre páginas. As informações de modelo e prompt das imagens devem ser completadas pela pessoa que as gerou.
 
 ## 👨‍🏫 Professor
 

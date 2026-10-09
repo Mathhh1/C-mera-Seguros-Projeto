@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/site/styles.css">
     <link rel="stylesheet" href="../compra/carrinho.css">
-    <!-- A lógica do carrinho é compartilhada com a página de compra. -->
     <script src="../compra/compra.js" defer></script>
     <script src="carrossel.js" defer></script>
     <script src="script.js" defer></script>
+    <!--icone do site-->
     <link rel="icon" type="image/png" href="/site/assents/imagens/7bd2384f-269c-4f12-944d-944b6034e9fe.png">
     <title>Câmere Seguros</title>
 </head>
 <body>
-    <!-- Cabeçalho -->
+    <!-- Cabeçalho / Informações acima do site. -->
 <header class="cabecalho">
     <nav>
         <img src="/site/assents/imagens/7bd2384f-269c-4f12-944d-944b6034e9fe.png" alt="Câmera Seguros" id="logo-inicial">
         <p class="frase-cabecalho">Seu próximo carro, com confiança.</p>
-        <!-- Ações principais: catálogo, contato e carrinho. -->
         <div class="acoes-cabecalho">
         <a class="saiba-mais" href="#informacoes-titulo">Saiba Mais</a>
         <button class="contate-conosco" id="abrir-contato" type="button">Contate Conosco</button>
@@ -51,7 +50,6 @@
 <!-- Informações abaixo -->
 </main>
 
-<!-- Busca, filtro e cartões formam o catálogo que a pessoa pode explorar. -->
 <section class="secao-informacoes" aria-labelledby="informacoes-titulo">
     <h2 class="informacoes-titulo" id="informacoes-titulo">Uma escolha segura, do começo ao fim</h2>
     <form class="controles-produtos" id="form-busca-produtos" role="search">
@@ -72,7 +70,6 @@
         </label>
     </form>
     <div class="lista-carros" aria-label="Carros disponíveis para compra">
-        <!-- O data-categoria é lido pelo JavaScript para filtrar os carros. -->
         <article class="card-carro" data-categoria="sedan">
             <img src="../compra/imagens/civic.png" alt="Honda Civic cinza" class="imagem-carro">
             <div class="card-carro-info"><p class="categoria-carro">SEDÃ · FLEX</p><h3>Honda Civic</h3><p class="detalhes-carro">2020 · Automático</p><p class="preco-carro">R$ 110.000</p><button class="btn-interesse" type="button" data-carro="Honda Civic">Tenho interesse</button></div>
@@ -94,7 +91,7 @@
         <article class="card-informacao"><span class="icone-informacao">03</span><h3>Compra sem complicação</h3><p>Conte com orientação clara para seguir com confiança em cada etapa.</p></article>
     </div>
 </section>
-
+<!-- Rodapé do site -->
 <footer class="rodape">
     <p>© 2026 Câmere Seguros. Todos os direitos reservados (Empresa Fíctica).</p>
     <a href="https://github.com/Mathhh1/C-mera-Seguros-Projeto" target="_blank" rel="noopener noreferrer">
@@ -109,11 +106,11 @@
         <div class="vw-plugin-top-wrapper"></div>
     </div>
 </div>
+<!--Libras do governo. Semelhante ao projeto de desenvolvimento web-->
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
     new window.VLibras.Widget("https://vlibras.gov.br/app");
 </script>
-<!-- Os formulários ficam em diálogos para não ocupar a página o tempo todo. -->
 <dialog id="modal-contato" class="modal-contato" aria-labelledby="titulo-contato">
     <form class="form-contato" id="form-contato">
         <p class="contato-eyebrow">ATENDIMENTO CÂMERE</p><h3 id="titulo-contato">Vamos conversar?</h3>
