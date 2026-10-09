@@ -7,8 +7,8 @@
 
 /* Aviso que aparece quando termina a compra */
 #aviso-compra {
-    width: 360px;
-    max-width: calc(100% - 80px);
+    width: min(360px, 92vw);
+    max-width: 92vw;
     padding: 30px;
     border: 1px solid #8dbaff;
     border-radius: 15px;
@@ -32,7 +32,7 @@
 }
 
 h1 {
-    font-size: 32px;
+    font-size: clamp(1.6rem, 5vw, 2rem);
 }
 
 /* Lista dos carros */
@@ -145,6 +145,7 @@ input {
     font-size: 14px;
 }
 
+/* No celular, os carros ficam um abaixo do outro para facilitar a leitura. */
 @media (max-width: 600px) {
     .carros {
         flex-direction: column;
@@ -156,5 +157,13 @@ input {
 
     .carrinho {
         padding: 20px;
+    }
+
+    .parte-compra {
+        margin: 20px auto;
+    }
+
+    .carro {
+        padding: 16px;
     }
 }

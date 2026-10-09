@@ -1,5 +1,6 @@
 ﻿// Guardo os carros aqui para não perder quando voltar para o início
 let carrinho = [];
+// Se ainda houver itens salvos no navegador, eles reaparecem no carrinho.
 try {
     carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 } catch (erro) {
@@ -16,6 +17,7 @@ const avisoCompra = document.getElementById('aviso-compra');
 const caixaCarrinho = document.getElementById('meu-carrinho');
 
 function mostrarPreco(valor) {
+    // Exibe os valores no formato usado no Brasil.
     return valor.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
@@ -24,6 +26,7 @@ function mostrarPreco(valor) {
 
 function salvarCarrinho() {
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    // Atualiza a janela do carrinho logo depois de qualquer mudança.
     mostrarCarrinho();
 }
 
@@ -40,6 +43,7 @@ function mostrarCarrinho() {
     listaCarros.innerHTML = '';
     let total = 0;
 
+    // Recria a lista para refletir os itens e o total atuais.
     for (let i = 0; i < carrinho.length; i++) {
         const linhaCarro = document.createElement('li');
         const nomeEPreco = document.createElement('div');
@@ -119,6 +123,7 @@ if (window.location.search === '?carrinho=aberto') {
 
 // Mostra os carros de novo quando voltar pelo navegador
 window.addEventListener('pageshow', function () {
+    // Ao voltar do catálogo, lê de novo o carrinho salvo no navegador.
     carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     mostrarCarrinho();
 });

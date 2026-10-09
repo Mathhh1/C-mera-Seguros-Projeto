@@ -104,3 +104,27 @@
     display: inline-block;
     text-decoration: none;
 }
+
+@media (max-width: 560px) {
+    .carrinho {
+        max-width: calc(100vw - 24px);
+        max-height: 90vh;
+        padding: 18px;
+    }
+
+    #lista-carrinho li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #lista-carrinho li > div {
+        flex-basis: 100%;
+    }
+
+    #lista-carrinho .botao-carro {
+        flex: 1 1 80px;
+        margin: 0;
+    }
+}

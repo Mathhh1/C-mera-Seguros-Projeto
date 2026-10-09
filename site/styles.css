@@ -1,4 +1,5 @@
-﻿:root {
+/* As cores ficam centralizadas aqui para manter o mesmo clima no site todo. */
+:root {
     color-scheme: light;
     --azul: #075fe4;
     --azul-escuro: #082b5c;
@@ -7,17 +8,26 @@
     --branco: #fff;
 }
 
-body {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
+}
+
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    min-width: 320px;
     margin: 0;
     padding: 16px;
+    overflow-x: clip;
     background: var(--fundo-site);
     color: var(--branco);
     font-family: Arial, sans-serif;
 }
+
+/* Cabeçalho, frase central e botões de navegação. */
 .cabecalho {
     margin: 0;
     padding: 16px clamp(20px, 4vw, 48px);
@@ -28,10 +38,25 @@ body {
 }
 
 .cabecalho > nav {
+    /* Logo, frase e botões ocupam três áreas no cabeçalho. */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(10px, 2vw, 24px);
+}
+.acoes-cabecalho {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    justify-self: end;
+    gap: 12px;
+}
+.frase-cabecalho {
+    margin: 0;
+    color: #c5d4e8;
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
 }
 .cabecalho .saiba-mais,
 .cabecalho .contate-conosco {
@@ -51,7 +76,9 @@ body {
     color: var(--branco);
 }
 
-.modal-contato {
+/* Janelas e campos dos formulários de contato e interesse. */
+.modal-contato,
+.modal-interesse {
     box-sizing: border-box;
     width: min(92vw, 500px);
     max-width: 500px;
@@ -64,22 +91,26 @@ body {
     color: var(--branco);
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
 }
-.modal-contato::backdrop {
+.modal-contato::backdrop,
+.modal-interesse::backdrop {
     background: rgba(3, 10, 20, 0.76);
     backdrop-filter: blur(5px);
 }
-.form-contato {
+.form-contato,
+.form-interesse {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: clamp(22px, 5vw, 34px);
 }
-.form-contato h3 {
+.form-contato h3,
+.form-interesse h3 {
     margin: 0 0 4px;
     color: #dce9ff;
     font-size: 1.6rem;
 }
-.form-contato h3::after {
+.form-contato h3::after,
+.form-interesse h3::after {
     display: block;
     width: 48px;
     height: 3px;
@@ -88,15 +119,18 @@ body {
     background: linear-gradient(90deg, #2580ff, #76b3ff);
     content: "";
 }
-.form-contato label {
+.form-contato label,
+.form-interesse label {
     margin-top: 4px;
     color: #cbd8e8;
     font-size: 0.9rem;
     font-weight: 600;
 }
 .form-contato input,
-.form-contato select,
-.form-contato textarea {
+.form-contato textarea,
+.form-interesse input,
+.form-interesse select,
+.form-interesse textarea {
     box-sizing: border-box;
     width: 100%;
     padding: 12px 14px;
@@ -107,21 +141,51 @@ body {
     font: inherit;
     transition: border-color 160ms ease, box-shadow 160ms ease;
 }
-.form-contato textarea {
+.form-contato textarea,
+.form-interesse textarea {
     min-height: 110px;
     resize: vertical;
 }
 .form-contato input::placeholder,
-.form-contato textarea::placeholder {
+.form-contato textarea::placeholder,
+.form-interesse input::placeholder,
+.form-interesse textarea::placeholder {
     color: #8394aa;
 }
 .form-contato input:focus,
-.form-contato select:focus,
-.form-contato textarea:focus {
+.form-contato textarea:focus,
+.form-interesse input:focus,
+.form-interesse select:focus,
+.form-interesse textarea:focus {
     outline: none;
     border-color: #5ba0ff;
     box-shadow: 0 0 0 3px rgba(37, 128, 255, 0.2);
 }
+.form-contato {
+    gap: 12px;
+    padding: clamp(24px, 6vw, 38px);
+}
+.form-contato h3 {
+    font-size: 1.9rem;
+}
+.form-contato h3::after { display: none; }
+.contato-eyebrow {
+    margin: 0;
+    color: #8dbaff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+.contato-descricao {
+    margin: -4px 0 6px;
+    color: #aebdd1;
+    line-height: 1.55;
+}
+.form-contato label span {
+    color: #91a2b7;
+    font-weight: 400;
+}
+.form-contato .btn-enviar { padding-inline: 24px; }
 .botoes-form {
     display: flex;
     justify-content: flex-end;
@@ -152,23 +216,38 @@ body {
     box-shadow: 0 6px 14px rgba(7, 95, 228, 0.28);
 }
 
+/* Ajustes do cabeçalho em tablets e celulares. */
 #logo-inicial {
     display: block;
     width: clamp(180px, 23vw, 240px);
     height: 120px;
-    margin: 0 auto 0 0;
+    margin: 0;
+    justify-self: start;
     object-fit: contain;
     object-position: center;
 }
-@media (max-width: 560px) {
-    .cabecalho { padding: 16px; }
-    .cabecalho > nav { flex-wrap: wrap; gap: 10px; }
+@media (max-width: 900px) {
+    #logo-inicial { width: 170px; height: 100px; }
+    .frase-cabecalho { font-size: 0.88rem; }
+    .acoes-cabecalho { gap: 8px; }
     .cabecalho .saiba-mais,
     .cabecalho .contate-conosco { padding: 9px 12px; font-size: 0.82rem; }
-    #logo-inicial { flex-basis: 100%; }
+}
+@media (max-width: 850px) {
+    .cabecalho > nav { grid-template-columns: minmax(0, 1fr) auto; }
+    .frase-cabecalho { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (max-width: 560px) {
+    .cabecalho { padding: 16px; }
+    .cabecalho > nav { grid-template-columns: 1fr; gap: 12px; }
+    .frase-cabecalho { grid-column: 1; grid-row: auto; white-space: normal; }
+    .acoes-cabecalho { grid-column: 1; justify-self: center; width: 100%; }
+    .cabecalho .saiba-mais,
+    .cabecalho .contate-conosco { padding: 9px 12px; font-size: 0.82rem; }
+    #logo-inicial { width: 100%; height: 88px; justify-self: center; }
 }
 
-.parte-principal {
+.container-principal {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -202,26 +281,30 @@ h2 {
     opacity: 1;
     filter: drop-shadow(0 18px 20px rgba(7, 48, 105, 0.2));
 }
-.parte-principal p {
+.container-principal p {
     max-width: 680px;
     margin: 0;
     color: var(--cinza-texto);
     font-size: clamp(1.05rem, 2vw, 1.25rem);
     line-height: 1.65;
 }
-.parte-principal span {
+.container-principal span {
     max-width: 620px;
     color: #aebdd1;
     line-height: 1.6;
 }
 .saiba-mais {
+    display: inline-block;
     border: 0;
     border-radius: 999px;
     padding: 14px 26px;
     background: linear-gradient(135deg, #2580ff, var(--azul));
     color: var(--branco);
-    font: inherit;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
     font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(7, 95, 228, 0.22);
     transition: transform 160ms ease, box-shadow 160ms ease;
@@ -230,25 +313,195 @@ h2 {
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(7, 95, 228, 0.3);
 }
-.informacoes-titulo{
-    text-align: center;
-    font-size: 30px;
+
+/* Lista de veículos e espaço reservado para as fotos. */
+.secao-informacoes {
+    width: 100%;
+    max-width: 1100px;
+    min-width: 0;
+    margin: 28px auto 72px;
+}
+.informacoes-titulo {
+    max-width: none;
+    margin: 0;
     color: #dce9ff;
+    text-align: center;
+    font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+    line-height: 1.15;
+    text-wrap: balance;
 }
-.parte-informacoes {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.lista-carros {
+    /* Os cartões viram colunas menores conforme a tela perde espaço. */
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    min-width: 0;
     gap: 20px;
-    font-size: 30px;
+    margin: 30px 0 52px;
 }
-.parte-informacoes img {
-    max-width: min(100%, 320px);
-    height: auto;
-    border: 1px solid #d9e1eb;
-    border-radius: 18px;
-    box-shadow: 0 8px 22px rgba(16, 35, 61, 0.1);
+.card-carro {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(141, 186, 255, 0.2);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(30, 53, 79, 0.94), rgba(15, 30, 49, 0.98));
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 180ms ease, box-shadow 180ms ease;
 }
+.card-carro:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.28);
+}
+.foto-carro {
+    display: grid;
+    min-height: 190px;
+    place-items: center;
+    padding: 16px;
+    background: radial-gradient(ellipse at 50% 100%, rgba(37, 128, 255, 0.3), transparent 58%), linear-gradient(135deg, #253e5c, #14263b);
+    color: #b9cbe0;
+    text-align: center;
+    line-height: 1.8;
+}
+.foto-carro code {
+    color: #8dbaff;
+    font-size: 0.78rem;
+}
+.foto-carro-com-imagem {
+    padding: 0;
+}
+.imagem-carro {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    object-position: center 58%;
+}
+.card-carro-info { padding: 22px; }
+.categoria-carro {
+    margin: 0 0 8px;
+    color: #8dbaff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+.card-carro-info h3 {
+    margin: 0;
+    color: #e5efff;
+    font-size: 1.25rem;
+    overflow-wrap: anywhere;
+}
+.detalhes-carro {
+    margin: 10px 0 16px;
+    color: #aebdd1;
+    font-size: 0.9rem;
+}
+.preco-carro {
+    margin: 0 0 18px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.btn-interesse {
+    width: 100%;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2580ff, var(--azul));
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.btn-interesse:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(7, 95, 228, 0.32);
+}
+
+/* Cards com informações sobre o atendimento. */
+.informacoes-intro {
+    max-width: 650px;
+    margin: 14px auto 32px;
+    color: var(--cinza-texto);
+    text-align: center;
+    line-height: 1.6;
+}
+.container-informacoes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+.card-informacao {
+    padding: 26px;
+    border: 1px solid rgba(141, 186, 255, 0.18);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(30, 53, 79, 0.82), rgba(15, 30, 49, 0.88));
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+}
+.icone-informacao {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(91, 160, 255, 0.35);
+    border-radius: 14px;
+    background: rgba(37, 128, 255, 0.14);
+    color: #8dbaff;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.card-informacao h3 {
+    margin: 20px 0 8px;
+    color: #e5efff;
+    font-size: 1.15rem;
+}
+.card-informacao p {
+    margin: 0;
+    color: var(--cinza-texto);
+    line-height: 1.6;
+}
+@media (max-width: 760px) {
+    .lista-carros,
+    .container-informacoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .secao-informacoes { margin-bottom: 48px; }
+}
+
+@media (max-width: 560px) {
+    body { padding: 10px; }
+    .cabecalho { padding: 14px; }
+    .cabecalho > nav { justify-content: center; }
+    .acoes-cabecalho { flex-wrap: wrap; justify-content: center; }
+    .acoes-cabecalho .saiba-mais,
+    .acoes-cabecalho .contate-conosco { flex: 1 1 140px; min-width: 0; padding: 9px 10px; font-size: 0.82rem; text-align: center; white-space: normal; }
+    .acoes-cabecalho .botao-carrinho { margin-left: 0; }
+    .container-principal {
+        min-height: auto;
+        gap: 14px;
+        padding: clamp(36px, 10vw, 52px) 14px;
+    }
+    .container-principal h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+    .imagem-seguro { max-height: 27vh; }
+    .lista-carros,
+    .container-informacoes { grid-template-columns: 1fr; }
+    .lista-carros { gap: 16px; margin: 24px 0 40px; }
+    .foto-carro { min-height: 170px; }
+    .card-carro-info { padding: 20px; }
+    .secao-informacoes { margin-top: 20px; }
+    .informacoes-intro { margin-bottom: 24px; }
+    .modal-contato,
+    .modal-interesse { width: calc(100vw - 24px); max-height: calc(100vh - 24px); }
+    .form-contato,
+    .form-interesse { padding: 20px; }
+}
+
+@media (max-width: 360px) {
+    body { padding: 8px; }
+    .cabecalho .saiba-mais,
+    .cabecalho .contate-conosco { padding: 9px 10px; font-size: 0.78rem; }
+    .container-principal { padding-inline: 14px; }
+}
+
+/* Rodapé e link do GitHub. */
 .rodape {
     box-sizing: border-box;
     width: calc(100% + 32px);
@@ -264,63 +517,76 @@ h2 {
 .rodape a {
     color: #8dbaff;
 }
-/* Carros que passam no início */
-.carrossel {
-    position: relative;
-    width: 100%;
-    max-width: 700px;
-    padding: 0 45px;
-    box-sizing: border-box;
-}
 
-.fotos-carros {
-    height: 330px;
-}
-
-.foto-inicio {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.foto-inicio[hidden] {
-    display: none;
-}
-
-/* Uma seta em cada lado do carro */
-.botoes-carrossel button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border: 1px solid #57708e;
-    border-radius: 50%;
-    background-color: #12263d;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#carro-anterior {
-    left: 0;
-}
-
-#proximo-carro {
-    right: 0;
+.logo-github {
+    width: 50px;
+    height: 50px;
+    margin-left: 8px;
 }
 
 @media (max-width: 560px) {
-    .fotos-carros {
-        height: 230px;
-    }
-    .carrossel {
-        padding: 0 32px;
-    }
-    .botoes-carrossel button {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-    }
+    .rodape { width: calc(100% + 20px); margin: auto -10px -10px; padding: 18px 12px; }
+}
+@media (max-width: 360px) {
+    .rodape { width: calc(100% + 16px); margin: auto -8px -8px; }
+}
+
+/* Carrossel mantido da versão enviada. */
+.carrossel { position: relative; width: min(100%, 700px); padding: 0 48px; }
+.fotos-carros { height: 330px; }
+.foto-inicio { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 18px 20px rgba(7, 48, 105, .28)); }
+.foto-inicio[hidden] { display: none; }
+.botoes-carrossel button { position: absolute; top: 50%; width: 42px; height: 42px; padding: 0; transform: translateY(-50%); border: 1px solid #57708e; border-radius: 50%; background: #12263d; color: white; font-size: 20px; cursor: pointer; }
+#carro-anterior { left: 0; }
+#proximo-carro { right: 0; }
+.acoes-cabecalho { align-items: center; }
+.botao-carrinho { min-width: 46px; min-height: 42px; padding: 8px 12px; border: 1px solid rgba(141,186,255,.35); border-radius: 999px; background: rgba(18,38,61,.8); color: white; font-size: 1.15rem; cursor: pointer; }
+@media (max-width: 560px) { .fotos-carros { height: 230px; } .carrossel { padding: 0 34px; } .botoes-carrossel button { width: 32px; height: 32px; font-size: 16px; } }
+
+.controles-produtos {
+    /* Busca e categoria ficam alinhadas acima dos cartões. */
+    display: flex;
+    width: min(100%, 760px);
+    margin: 28px auto 0;
+    gap: 10px;
+}
+.busca-produtos { flex: 1 1 280px; min-width: 0; }
+.busca-produtos input,
+.filtro-produtos select {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1px solid rgba(141, 186, 255, .35);
+    border-radius: 14px;
+    background: #12263d;
+    color: #fff;
+    font: inherit;
+}
+.busca-produtos input::placeholder { color: #aebdd1; }
+.busca-produtos input:focus,
+.filtro-produtos select:focus,
+.botao-busca:focus-visible { outline: 3px solid rgba(91, 160, 255, .65); outline-offset: 2px; }
+.botao-busca {
+    display: grid;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2580ff, var(--azul));
+    color: #fff;
+    cursor: pointer;
+}
+.botao-busca svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 2; }
+.filtro-produtos { flex: 0 1 210px; }
+.filtro-produtos select { cursor: pointer; }
+.nenhum-produto { margin: 28px 0; color: var(--cinza-texto); text-align: center; }
+.visualmente-oculto { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+/* No celular, o seletor de categoria fica abaixo do campo de busca. */
+@media (max-width: 560px) {
+    .controles-produtos { flex-wrap: wrap; }
+    .busca-produtos { flex-basis: calc(100% - 58px); }
+    .filtro-produtos { flex-basis: 100%; }
 }
