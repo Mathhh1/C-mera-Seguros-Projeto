@@ -1,71 +1,99 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/site/styles.css">
+    <link rel="stylesheet" href="../compra/carrinho.css">
+    <!-- A lógica do carrinho é compartilhada com a página de compra. -->
+    <script src="../compra/compra.js" defer></script>
+    <script src="carrossel.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/png" href="/site/assents/imagens/7bd2384f-269c-4f12-944d-944b6034e9fe.png">
     <title>Câmere Seguros</title>
 </head>
 <body>
-    <!--Cabeçario do site-->
+    <!-- Cabeçalho -->
 <header class="cabecalho">
     <nav>
         <img src="/site/assents/imagens/7bd2384f-269c-4f12-944d-944b6034e9fe.png" alt="Câmera Seguros" id="logo-inicial">
-        <button class="saiba-mais">Saiba Mais</button>
-        <button class="contate-conosco" id="abrir-contato">Contate Conosco</button>
+        <p class="frase-cabecalho">Seu próximo carro, com confiança.</p>
+        <!-- Ações principais: catálogo, contato e carrinho. -->
+        <div class="acoes-cabecalho">
+        <a class="saiba-mais" href="#informacoes-titulo">Saiba Mais</a>
+        <button class="contate-conosco" id="abrir-contato" type="button">Contate Conosco</button>
+        <button class="botao-carrinho" id="abrir-carrinho" type="button" aria-label="Abrir carrinho, 0 itens">
+                <span aria-hidden="true">🛒</span>
+                <span id="quantidade-carrinho" hidden>0</span>
+            </button>
+        </div>
     </nav>
 </header>
 <main>
-    <section class="container-principal">
+    <section class="container-principal parte-principal">
         <h2>Encontre o carro ideal para a sua próxima conquista.</h2>
-        <p>Na Câmera, você encontra veículos selecionados e atendimento próximo para fazer uma escolha segura e do seu jeito.</p>
+        <p>Na Câmare, você encontra veículos selecionados e atendimento próximo para fazer uma escolha segura e do seu jeito.</p>
         <span>Descubra boas oportunidades e conte com a nossa equipe em cada etapa da compra.</span>
-        <img src="/site/assents/imagens/auto-mustang-png.png" alt="Carro disponível para venda" class="imagem-seguro">
-        <!--Contato com interação em js/usuario-->
-        <button class="saiba-mais">Encontre seu próximo carro</button>
-        <dialog id="modal-contato" class="modal-contato">
-    <form method="dialog" class="form-contato" id="form-contato">
-        <h3>Fale com a gente</h3>
-
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="telefone">Telefone</label>
-        <input type="tel" id="telefone" name="telefone" placeholder="(81) 99999-9999">
-
-        <label for="assunto">Assunto</label>
-        <select id="assunto" name="assunto">
-            <option value="duvida">Dúvida</option>
-            <option value="orcamento">Orçamento</option>
-            <option value="outro">Outro</option>
-        </select>
-
-        <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
-
-        <div class="botoes-form">
-            <button type="button" id="fechar-contato" class="btn-cancelar">Cancelar</button>
-            <button type="submit" class="btn-enviar">Enviar</button>
+        <!-- Um carro por vez, usando as setas para trocar -->
+        <div class="carrossel" role="region" aria-label="Modelos de carros">
+            <div class="fotos-carros">
+                <img src="assents/imagens/celta-inicio.png" alt="Chevrolet Celta prata, imagem ilustrativa" class="foto-inicio">
+                <img src="assents/imagens/civic-inicio.png" alt="Honda Civic cinza, imagem ilustrativa" class="foto-inicio" hidden>
+                <img src="assents/imagens/gol-inicio.png" alt="Volkswagen Gol branco, imagem ilustrativa" class="foto-inicio" hidden>
+            </div>
+            <div class="botoes-carrossel">
+                <button type="button" id="carro-anterior" aria-label="Carro anterior">❮</button>
+                <button type="button" id="proximo-carro" aria-label="Próximo carro">❯</button>
+            </div>
         </div>
-    </form>
-</dialog>
+        <a class="saiba-mais" href="../compra/compra.html">Encontre seu próximo carro</a>
     </section>
-<!--Background para informações logo abaixo.-->
+<!-- Informações abaixo -->
 </main>
 
-<h3 class="informacoes-titulo">Abaixo mais informações:</h3>
-<!--Container para informações do site-->
-<div class="container-informacoes">
-    <p></p>
-    <img src="/site/images/planos.png" alt="Imagem de carro a venda" class="imagem-celta">
-    <p></p>
-    <img src="/site/images/planos.png" alt="Imagem de carro a venda" class="imagem-opala">
-    <p></p>
-    <img src="/site/images/planos.png" alt="Imagem de carro a venda" class="imagem-civic">
-</div>
+<!-- Busca, filtro e cartões formam o catálogo que a pessoa pode explorar. -->
+<section class="secao-informacoes" aria-labelledby="informacoes-titulo">
+    <h2 class="informacoes-titulo" id="informacoes-titulo">Uma escolha segura, do começo ao fim</h2>
+    <form class="controles-produtos" id="form-busca-produtos" role="search">
+        <label class="busca-produtos" for="busca-produtos">
+            <span class="visualmente-oculto">Buscar carro por nome, categoria ou preço</span>
+            <input id="busca-produtos" name="busca" type="search" placeholder="Buscar carros..." autocomplete="off">
+        </label>
+        <button class="botao-busca" type="submit" aria-label="Buscar produtos">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m15.5 15.5 5 5"></path></svg>
+        </button>
+        <label class="filtro-produtos" for="filtro-categoria">
+            <span class="visualmente-oculto">Filtrar por categoria</span>
+            <select id="filtro-categoria" name="categoria">
+                <option value="todos">Todas as categorias</option>
+                <option value="sedan">Sedãs</option>
+                <option value="hatch">Hatches</option>
+            </select>
+        </label>
+    </form>
+    <div class="lista-carros" aria-label="Carros disponíveis para compra">
+        <!-- O data-categoria é lido pelo JavaScript para filtrar os carros. -->
+        <article class="card-carro" data-categoria="sedan">
+            <img src="../compra/imagens/civic.png" alt="Honda Civic cinza" class="imagem-carro">
+            <div class="card-carro-info"><p class="categoria-carro">SEDÃ · FLEX</p><h3>Honda Civic</h3><p class="detalhes-carro">2020 · Automático</p><p class="preco-carro">R$ 110.000</p><button class="btn-interesse" type="button" data-carro="Honda Civic">Tenho interesse</button></div>
+        </article>
+        <article class="card-carro" data-categoria="hatch">
+            <img src="../compra/imagens/celta.png" alt="Chevrolet Celta prata" class="imagem-carro">
+            <div class="card-carro-info"><p class="categoria-carro">HATCH · FLEX</p><h3>Chevrolet Celta</h3><p class="detalhes-carro">2012 · Econômico</p><p class="preco-carro">R$ 25.000</p><button class="btn-interesse" type="button" data-carro="Chevrolet Celta">Tenho interesse</button></div>
+        </article>
+        <article class="card-carro" data-categoria="hatch">
+            <img src="../compra/imagens/gol.png" alt="Volkswagen Gol branco" class="imagem-carro">
+            <div class="card-carro-info"><p class="categoria-carro">HATCH · FLEX</p><h3>Volkswagen Gol</h3><p class="detalhes-carro">2018 · Econômico</p><p class="preco-carro">R$ 45.000</p><button class="btn-interesse" type="button" data-carro="Volkswagen Gol">Tenho interesse</button></div>
+        </article>
+    </div>
+    <p class="nenhum-produto" id="nenhum-produto" role="status" hidden>Nenhum carro encontrado. Tente outra busca ou categoria.</p>
+    <p class="informacoes-intro">Encontre o carro certo com atendimento próximo e informações claras em cada etapa.</p>
+    <div class="container-informacoes">
+        <article class="card-informacao"><span class="icone-informacao">01</span><h3>Carros selecionados</h3><p>Opções escolhidas com cuidado para ajudar você a encontrar o veículo ideal.</p></article>
+        <article class="card-informacao"><span class="icone-informacao">02</span><h3>Atendimento próximo</h3><p>Tire suas dúvidas com uma equipe pronta para acompanhar sua decisão.</p></article>
+        <article class="card-informacao"><span class="icone-informacao">03</span><h3>Compra sem complicação</h3><p>Conte com orientação clara para seguir com confiança em cada etapa.</p></article>
+    </div>
+</section>
 
 <footer class="rodape">
     <p>© 2026 Câmere Seguros. Todos os direitos reservados (Empresa Fíctica).</p>
@@ -85,7 +113,38 @@
 <script>
     new window.VLibras.Widget("https://vlibras.gov.br/app");
 </script>
-
-<script src="/site/script.js"></script>
+<!-- Os formulários ficam em diálogos para não ocupar a página o tempo todo. -->
+<dialog id="modal-contato" class="modal-contato" aria-labelledby="titulo-contato">
+    <form class="form-contato" id="form-contato">
+        <p class="contato-eyebrow">ATENDIMENTO CÂMERE</p><h3 id="titulo-contato">Vamos conversar?</h3>
+        <p class="contato-descricao">Envie sua mensagem. Nossa equipe entrará em contato com você.</p>
+        <label for="contato-nome">Seu nome</label><input id="contato-nome" name="nome" autocomplete="name" required>
+        <label for="contato-email">E-mail</label><input id="contato-email" name="email" type="email" autocomplete="email" required>
+        <label for="contato-mensagem">Como podemos ajudar?</label><textarea id="contato-mensagem" name="mensagem" rows="4" required></textarea>
+        <div class="botoes-form"><button type="button" id="fechar-contato" class="btn-cancelar">Cancelar</button><button type="submit" class="btn-enviar">Enviar mensagem</button></div>
+    </form>
+</dialog>
+<dialog id="modal-interesse" class="modal-interesse" aria-labelledby="titulo-interesse">
+    <form class="form-interesse" id="form-interesse">
+        <h3 id="titulo-interesse">Tenho interesse neste carro</h3>
+        <label for="interesse-nome">Nome</label><input type="text" id="interesse-nome" name="nome" autocomplete="name" required>
+        <label for="interesse-email">E-mail</label><input type="email" id="interesse-email" name="email" autocomplete="email" required>
+        <label for="interesse-telefone">Telefone</label><input type="tel" id="interesse-telefone" name="telefone" autocomplete="tel" placeholder="(00) 00000-0000">
+        <label for="interesse-assunto">Assunto</label>
+        <select id="interesse-assunto" name="assunto"><option value="duvida">Dúvida</option><option value="orcamento">Orçamento</option><option value="outro">Outro</option></select>
+        <label for="interesse-mensagem">Mensagem</label><textarea id="interesse-mensagem" name="mensagem" rows="4" required></textarea>
+        <div class="botoes-form"><button type="button" id="fechar-interesse" class="btn-cancelar">Cancelar</button><button type="submit" class="btn-enviar">Enviar</button></div>
+    </form>
+</dialog>
+<dialog class="carrinho" id="meu-carrinho" aria-labelledby="titulo-carrinho">
+    <button class="botao-limpar fechar-carrinho" id="fechar-carrinho" type="button">Fechar</button>
+    <h2 id="titulo-carrinho">Meu carrinho</h2>
+    <p id="carrinho-vazio">Seu carrinho está vazio.</p>
+    <ul id="lista-carrinho"></ul>
+    <p id="total" aria-live="polite">Total: R$ 0,00</p>
+    <button class="botao-limpar" id="limpar-carrinho" type="button">Limpar carrinho</button>
+    <p><a class="saiba-mais" href="../compra/compra.html?carrinho=aberto">Ir para compra</a></p>
+    <p id="mensagem-compra" role="status"></p>
+</dialog>
 </body>
 </html>

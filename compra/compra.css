@@ -1,0 +1,169 @@
+﻿/* Página de compra */
+.parte-compra {
+    max-width: 1100px;
+    width: 100%;
+    margin: 30px auto;
+}
+
+/* Aviso que aparece quando termina a compra */
+#aviso-compra {
+    width: min(360px, 92vw);
+    max-width: 92vw;
+    padding: 30px;
+    border: 1px solid #8dbaff;
+    border-radius: 15px;
+    background-color: #12263d;
+    color: white;
+    text-align: center;
+}
+
+#aviso-compra::backdrop {
+    background-color: #000000aa;
+}
+
+#aviso-compra h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+.cabecalho a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+}
+
+/* Lista dos carros */
+.carros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.carro {
+    flex: 1 1 260px;
+    min-width: 0;
+    padding: 20px;
+    background-color: #12263d;
+    border: 1px solid #57708e;
+    border-radius: 15px;
+}
+
+.carro h2,
+.carrinho h2 {
+    font-size: 24px;
+}
+
+.foto-carro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    margin-bottom: 20px;
+    background-color: #203852;
+    border-radius: 10px;
+    color: #d2d9e3;
+}
+
+/* Fotos dos carros */
+.carro img {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.preco {
+    font-weight: bold;
+    color: #8dbaff;
+}
+
+/* Carrinho e formulário */
+.carrinho {
+    padding: 25px;
+    background-color: #12263d;
+    border: 1px solid #57708e;
+    border-radius: 15px;
+}
+
+#lista-carrinho {
+    padding-left: 20px;
+    overflow-wrap: anywhere;
+}
+
+#lista-carrinho li {
+    margin-bottom: 10px;
+}
+
+#total {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.botao-limpar {
+    padding: 10px 15px;
+    border: 1px solid #8dbaff;
+    border-radius: 8px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+#formulario-compra {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin-top: 25px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #57708e;
+    border-radius: 8px;
+    background-color: #203852;
+    color: white;
+    font: inherit;
+}
+
+#formulario-compra button {
+    margin-top: 10px;
+}
+
+#mensagem-compra {
+    color: #8dbaff;
+}
+
+.aviso {
+    color: #d2d9e3;
+    font-size: 14px;
+}
+
+/* No celular, os carros ficam um abaixo do outro para facilitar a leitura. */
+@media (max-width: 600px) {
+    .carros {
+        flex-direction: column;
+    }
+
+    .carro {
+        flex-basis: auto;
+    }
+
+    .carrinho {
+        padding: 20px;
+    }
+
+    .parte-compra {
+        margin: 20px auto;
+    }
+
+    .carro {
+        padding: 16px;
+    }
+}
