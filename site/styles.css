@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     color-scheme: light;
     --azul: #075fe4;
     --azul-escuro: #082b5c;
@@ -71,7 +71,7 @@ body {
     #logo-inicial { flex-basis: 100%; }
 }
 
-.container-principal {
+.parte-principal {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -105,14 +105,14 @@ h2 {
     opacity: 1;
     filter: drop-shadow(0 18px 20px rgba(7, 48, 105, 0.2));
 }
-.container-principal p {
+.parte-principal p {
     max-width: 680px;
     margin: 0;
     color: var(--cinza-texto);
     font-size: clamp(1.05rem, 2vw, 1.25rem);
     line-height: 1.65;
 }
-.container-principal span {
+.parte-principal span {
     max-width: 620px;
     color: #aebdd1;
     line-height: 1.6;
@@ -138,14 +138,14 @@ h2 {
     font-size: 30px;
     color: #dce9ff;
 }
-.container-informacoes {
+.parte-informacoes {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
     font-size: 30px;
 }
-.container-informacoes img {
+.parte-informacoes img {
     max-width: min(100%, 320px);
     height: auto;
     border: 1px solid #d9e1eb;
@@ -166,4 +166,64 @@ h2 {
 }
 .rodape a {
     color: #8dbaff;
+}
+/* Carros que passam no início */
+.carrossel {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 45px;
+    box-sizing: border-box;
+}
+
+.fotos-carros {
+    height: 330px;
+}
+
+.foto-inicio {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.foto-inicio[hidden] {
+    display: none;
+}
+
+/* Uma seta em cada lado do carro */
+.botoes-carrossel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #57708e;
+    border-radius: 50%;
+    background-color: #12263d;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#carro-anterior {
+    left: 0;
+}
+
+#proximo-carro {
+    right: 0;
+}
+
+@media (max-width: 560px) {
+    .fotos-carros {
+        height: 230px;
+    }
+    .carrossel {
+        padding: 0 32px;
+    }
+    .botoes-carrossel button {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
 }

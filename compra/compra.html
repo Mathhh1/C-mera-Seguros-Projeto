@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../site/styles.css">
+    <link rel="stylesheet" href="compra.css">
+    <link rel="stylesheet" href="carrinho.css">
+    <script src="compra.js" defer></script>
+    <title>Compra de carros | Câmera Seguros</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <nav>
+            <a href="../site/index.html">
+                <img src="../site/assents/imagens/7bd2384f-269c-4f12-944d-944b6034e9fe.png" alt="Câmera Seguros" id="logo-inicial">
+            </a>
+            <a class="saiba-mais" href="../site/index.html">Voltar ao início</a>
+            <button class="botao-carrinho" id="abrir-carrinho" type="button" aria-label="Abrir carrinho, 0 itens">
+                <span aria-hidden="true">🛒</span>
+                <span id="quantidade-carrinho" hidden>0</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="parte-compra">
+        <h1>Escolha seu carro</h1>
+        <p>Adicione os carros ao carrinho e preencha seus dados para comprar.</p>
+
+        <!-- Carros disponíveis -->
+        <section class="carros" aria-label="Carros disponíveis">
+            <div class="carro">
+                <img src="imagens/celta.png" alt="Imagem ilustrativa de um Chevrolet Celta prata">
+                <h2>Chevrolet Celta</h2>
+                <p>Ano 2012</p>
+                <p class="preco">R$ 25.000,00</p>
+                <button class="saiba-mais" type="button" onclick="adicionarAoCarrinho('Chevrolet Celta', 25000)">Adicionar ao carrinho</button>
+            </div>
+
+            <div class="carro">
+                <img src="imagens/civic.png" alt="Imagem ilustrativa de um Honda Civic cinza">
+                <h2>Honda Civic</h2>
+                <p>Ano 2020</p>
+                <p class="preco">R$ 110.000,00</p>
+                <button class="saiba-mais" type="button" onclick="adicionarAoCarrinho('Honda Civic', 110000)">Adicionar ao carrinho</button>
+            </div>
+
+            <div class="carro">
+                <img src="imagens/gol.png" alt="Imagem ilustrativa de um Volkswagen Gol branco">
+                <h2>Volkswagen Gol</h2>
+                <p>Ano 2018</p>
+                <p class="preco">R$ 45.000,00</p>
+                <button class="saiba-mais" type="button" onclick="adicionarAoCarrinho('Volkswagen Gol', 45000)">Adicionar ao carrinho</button>
+            </div>
+        </section>
+
+        <dialog class="carrinho" id="meu-carrinho" aria-labelledby="titulo-carrinho">
+            <button class="botao-limpar fechar-carrinho" id="fechar-carrinho" type="button">Fechar</button>
+            <h2 id="titulo-carrinho">Meu carrinho</h2>
+            <p id="carrinho-vazio">Seu carrinho está vazio.</p>
+            <ul id="lista-carrinho"></ul>
+            <p id="total" aria-live="polite">Total: R$ 0,00</p>
+            <button class="botao-limpar" id="limpar-carrinho" type="button">Limpar carrinho</button>
+
+            <!-- Nome e e-mail para comprar -->
+            <form id="formulario-compra">
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" type="text" autocomplete="name" required>
+
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+
+                <button class="saiba-mais" type="submit">Comprar</button>
+            </form>
+            <p id="mensagem-compra" role="status"></p>
+            <p class="aviso">Compra de demonstração, sem pagamento ou envio de dados.</p>
+        </dialog>
+    </main>
+
+    <dialog id="aviso-compra" aria-labelledby="titulo-aviso">
+        <h2 id="titulo-aviso">Sua compra foi realizada com sucesso!</h2>
+        <form method="dialog">
+            <button class="saiba-mais" autofocus>Continuar</button>
+        </form>
+    </dialog>
+
+    <footer class="rodape">
+    <p>© 2026 Câmere Seguros. Todos os direitos reservados (Empresa Fíctica).</p>
+    <a href="https://github.com/Mathhh1/Planos-de-saude-PROJETO" target="_blank">GitHub</a>
+</footer>
+</body>
+</html>
